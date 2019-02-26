@@ -1,0 +1,161 @@
+/*
+ *  File Name:      style.css
+ *  Author:         Jacobus Janse van Vuren
+ *  Date Created:   28-08-2017
+ */
+
+/* Styling for the top navigation bar */
+nav {
+    background-color:#397893;
+    border-radius: 10px;
+    padding: 15px;
+    text-align: center;
+}
+a.nav {
+    margin-right: 20px;
+    font-family: 'Century Gothic', Verdana, sans-serif;
+    text-decoration: none;
+    font-weight: bold;
+    /*font-size: large;*/
+}
+a:hover.nav {font-size: large; color: #ff7f11}
+a:active.nav {color:#ff3f00}
+
+/* Styling for the body of the webpage */
+body {
+    margin-left: 1cm;
+    margin-right: 1cm;
+    margin-bottom: 1cm;
+    background-image: url('images/rice-paper-texture.jpg');
+    background-attachment: fixed;
+    background-repeat: repeat;
+}
+
+/* Styling for level 1 headings */
+h1 {
+    font-family: 'Century Gothic', Verdana, sans-serif;
+    color: #352a30;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+/* Styling for level 2 headings */
+h2 {
+    font-family: 'Century Gothic', Verdana, sans-serif;
+    color: #352a30;
+    text-transform: uppercase;
+    text-decoration: underline;
+}
+
+/* Styling for paragraphs */
+p {
+    text-align: left;
+    font-family: 'Lucida Sans Unicode', 'Lucida Grande', sans-serif;
+    color: #352a30;
+}
+/* Styling for the OFD abbreviation */
+span {
+    color: #397893;
+    font-weight: bolder;
+    font-size: larger;
+    font-family: 'Century Gothic', Verdana, sans-serif;
+}
+
+/* Used to change the colour of the required asterix for forms */
+span.required {
+    color: #cc312e;
+    font-weight: normal;
+    font-size: medium;
+}
+
+/* Styling for the cuisine wikipedia.org quote */
+blockquote {
+    font-family: 'Lucida Sans Unicode', 'Lucida Grande', sans-serif;
+    color: #eaeaea;
+    background-color:#397893;
+    border-radius: 10px;
+    padding: 15px;
+}
+
+/* Styling for the cuisine list */
+ul {
+    list-style-type: square;
+    font-family: 'Lucida Sans Unicode', 'Lucida Grande', sans-serif;
+    color: #352a30;
+}
+
+/* Remove bullet point from images in list */
+li.image {
+    list-style-type: none;
+}
+
+/* Styling for webpage images */
+img {
+    padding: 0px;
+    border-width:3px;
+    border-style: solid;
+    border-color: #397893;
+}
+
+/* Class to float images to the left in an unordered list. */
+img.floatLeft {
+    margin-bottom: 10px;
+    margin-right: 1cm;
+    float: left;
+}
+
+/* Class used to clear after text list items (keeps images inline) */
+br.floatLeft {
+    clear: both;
+}
+
+/* Font styling for hyperlinks */
+a {
+    font-family: 'Lucida Sans Unicode', 'Lucida Grande', sans-serif;
+}
+
+/* Color styling for hyperlinks (dark background) */
+a:link {color: #fce220}
+a:visited {color: #a19015}
+a:hover {font-size: larger; color: #ff7f11}
+a:active {color: #ff3f00}
+
+/* Color styling for hyperlinks (light background) */
+a:link.light {color: #397893}
+a:visited.light {color: #1a3642}
+a:hover.light {font-size: larger; color: #ff7f11}
+a:active.light {color: #ff3f00}
+
+/* Styling for the footer section of the webpage */
+div.footer {
+    background-color:#397893;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 15px;
+    padding-right: 15px;
+    border-radius: 10px;
+    margin-bottom: 1cm;
+}
+
+/* Webpage copyright statement styling */
+p.copyright {
+    font-size: small;
+    font-family: 'Lucida Sans Unicode', 'Lucida Grande', sans-serif;
+    color: #eaeaea;
+    text-align: right;
+}
+
+/* Styling for the customer survey form */
+form {
+    text-align: left;
+    font-family: 'Lucida Sans Unicode', 'Lucida Grande', sans-serif;
+    color: #352a30;
+}
+
+/* Styling for the customer survey form legend */
+legend {
+    font-family: 'Century Gothic', Verdana, sans-serif;
+    color: #352a30;
+    text-transform: uppercase;
+    text-decoration: underline;
+}

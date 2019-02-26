@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="cuisine.xsl" type="text/xsl"?>
+
+<!DOCTYPE cuisine [
+<!ELEMENT cuisine           (cuisineType, restaurant+)>
+<!ELEMENT restaurant        ( logo?
+                            , picture+
+                            , address
+                            , phoneNo+
+                            , openingHours
+                            , delivery
+                            , description
+                            , rating?
+                            , gpsCoordinates?)
+>
+<!ELEMENT cuisineType       EMPTY>
+<!ELEMENT logo              (#PCDATA)>
+<!ELEMENT picture           (#PCDATA)>
+<!ELEMENT address           EMPTY>
+<!ELEMENT phoneNo           (#PCDATA)>
+<!ELEMENT openingHours      (openTimes+)>
+<!ELEMENT openTimes         (openTime, closeTime)>
+<!ELEMENT openTime          (time)>
+<!ELEMENT closeTime         (time)>
+<!ELEMENT time              EMPTY>
+<!ELEMENT delivery          (minimumPrice, fee)>
+<!ELEMENT minimumPrice      EMPTY>
+<!ELEMENT fee               EMPTY>
+<!ELEMENT description       (#PCDATA)>
+<!ELEMENT gpsCoordinates    EMPTY>
+
+<!ATTLIST restaurant        name        CDATA   #REQUIRED>
+<!ATTLIST restaurant        url         CDATA   #REQUIRED>
+<!ATTLIST restaurant        openDays    CDATA   #REQUIRED>
+<!ATTLIST restaurant        rating      CDATA   #IMPLIED>
+<!ATTLIST cuisineType       type        (Asian
+                                                | BBQandGrill
+                                                | Burger
+                                                | Indian
+                                                | Italian
+                                                | Thai)
+                                                #REQUIRED
+>
+<!ATTLIST address           streetNo    CDATA   #REQUIRED>
+<!ATTLIST address           streetName  CDATA   #REQUIRED>
+<!ATTLIST address           city        CDATA   #REQUIRED>
+<!ATTLIST address           zipCode     CDATA   #REQUIRED>
+<!ATTLIST phoneNo           type        CDATA   #REQUIRED>
+<!ATTLIST openDays          day         CDATA   #REQUIRED>
+<!ATTLIST openTimes         day         CDATA   #REQUIRED>
+<!ATTLIST time              amPm        (am|pm) #REQUIRED>
+<!ATTLIST time              hours       CDATA   #REQUIRED>
+<!ATTLIST time              minutes     CDATA   #REQUIRED>
+<!ATTLIST minimumPrice      dollars     CDATA   #REQUIRED>
+<!ATTLIST minimumPrice      cents       CDATA   #REQUIRED>
+<!ATTLIST fee               dollars     CDATA   #REQUIRED>
+<!ATTLIST fee               cents       CDATA   #REQUIRED>
+<!ATTLIST gpsCoordinates    latitude    CDATA   #REQUIRED>
+<!ATTLIST gpsCoordinates    longitude   CDATA   #REQUIRED>
+
+<!ENTITY as     "Asian">
+<!ENTITY bq     "BBQandGrill">
+<!ENTITY bu     "Burger">
+<!ENTITY in     "Indian">
+<!ENTITY it     "Italian">
+<!ENTITY th     "Thai">
+<!ENTITY mon    "Monday">
+<!ENTITY tue    "Tuesday">
+<!ENTITY wed    "Wednesday">
+<!ENTITY thu    "Thursday">
+<!ENTITY fri    "Friday">
+<!ENTITY sat    "Saturday">
+<!ENTITY sun    "Sunday">
+]>
+
+<cuisine>
+    <cuisineType type="&bq;"/>
+    <restaurant name="Restaurant Name" url="www.example.com" openDays="&mon;&#45;&sun;"
+     rating="0">
+        <logo>temp</logo>
+        <picture>Picture</picture>
+        <address streetNo="0" streetName="Str Name" city="City" zipCode="0000"/>
+        <phoneNo type="type">000000000</phoneNo>
+        <openingHours>
+            <openTimes day="&mon;&#45;&sun;">
+                <openTime>
+                    <time amPm="am" hours="00" minutes="00"/>
+                </openTime>
+                <closeTime>
+                    <time amPm="pm" hours="00" minutes="00"/>
+                </closeTime>
+            </openTimes>
+        </openingHours>
+        <delivery>
+            <minimumPrice dollars="00" cents="00"/>
+            <fee dollars="00" cents="00"/>
+        </delivery>
+        <description>Description goes here</description>
+        <gpsCoordinates latitude="000" longitude="000"/>
+    </restaurant>
+</cuisine>

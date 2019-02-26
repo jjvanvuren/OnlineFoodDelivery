@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+
+<!--
+    File Name:      dataCollection.html
+    Author:         Jacobus Janse van Vuren
+    Date Created:   08-10-2017
+-->
+
+<html lang="en">
+
+    <!-- Webpage header -->
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" type="text/css" href="style.css" />
+        <link rel="icon" type="image/png" href="images/icon.png" />
+        <title>Customer Survey</title>
+
+        <script type="text/javascript">
+            //Function used to validate customer survey form
+            function validateForm() {
+
+                //Checks if firstName field is filled in
+                if (document.surveyForm.firstName.value == "") {
+                    alert("Please provide your first name.");
+                    document.surveyForm.firstName.focus();
+                    return false;
+                }
+
+                //Checks if lastName field is filled in
+                else if (document.surveyForm.lastName.value == "") {
+                    alert("Please provide your last name.");
+                    document.surveyForm.lastName.focus();
+                    return false;
+                }
+
+                //Checks for a valid email address using checkEmail() function
+                else if (checkEmail() == false) {
+                    alert("Please provide a valid email address.");
+                    document.surveyForm.email.focus();
+                    return false;
+                }
+
+                //Checks if an age range was selected
+                else if (!document.surveyForm.ageRange[0].checked &&
+                        !document.surveyForm.ageRange[1].checked &&
+                        !document.surveyForm.ageRange[2].checked &&
+                        !document.surveyForm.ageRange[3].checked &&
+                        !document.surveyForm.ageRange[4].checked &&
+                        !document.surveyForm.ageRange[5].checked) {
+                    alert("Please select an age range.");
+                    document.surveyForm.ageRange.focus();
+                    return false;
+                }
+
+                //Checks if address field is filled in
+                else if (document.surveyForm.address.value == "") {
+                    alert("Please enter your address details.");
+                    document.surveyForm.address.focus();
+                    return false;
+                }
+
+                //Checks if postcode is filled in and valid
+                else if (document.surveyForm.postCode.value.length != 4 || isNaN(document.surveyForm.postCode.value) == true) {
+                    alert("Please enter a valid postcode.");
+                    document.surveyForm.postCode.focus();
+                    return false;
+                }
+
+                //Checks if a state was selected
+                else if (document.surveyForm.state.selectedIndex == 0) {
+                    alert("Please select your state.");
+                    document.surveyForm.state.focus();
+                    return false;
+                }
+
+                //Checks if at least one cuisine was selected
+                else if (!document.surveyForm.faveCuisine[0].checked &&
+                        !document.surveyForm.faveCuisine[1].checked &&
+                        !document.surveyForm.faveCuisine[2].checked &&
+                        !document.surveyForm.faveCuisine[3].checked &&
+                        !document.surveyForm.faveCuisine[4].checked &&
+                        !document.surveyForm.faveCuisine[5].checked) {
+                    alert("Please select at least one cuisine type.");
+                    return false;
+                }
+
+                //If all required fields are filled in correctly submit the form
+                else {
+                    return true;
+                }
+            }
+
+            // Function checks for a valid email using RegEx
+            function checkEmail() {
+                //RegEx code for validating email was found at regular-expressions.info
+                //URL: http://www.regular-expressions.info/email.html
+                //Published by: Jan Goyvaerts
+                //Accessed on: 20 October 2017
+                var pattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+                var patternTest = pattern.test(document.surveyForm.email.value);
+
+                if (patternTest == false) {
+                    return false;
+                }
+                else {
+                    return true;
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <h1>Customer Survey</h1>
+
+        <!-- Online food delivery navigation bar -->
+        <nav class="survey">
+            <a class="nav" href="index.html">Home</a>
+            <a class="nav" href="Asian.xml">Asian</a>
+            <a class="nav" href="Burgers.xml">Burgers</a>
+            <a class="nav" href="#copyright">Copyright</a>
+            <a class="nav" href="https://www.visser.com.au/blog/generic-privacy-policy-for-australian-websites/">Privacy Policy</a>
+            <a class="nav" href="https://media.termsfeed.com/pdf/terms-and-conditions-template.pdf">Terms & Conditions</a>
+            <a class="nav" href="http://www.blogtyrant.com/best-about-us-pages/">About us</a>
+            <a class="nav" href="http://www.blogtyrant.com/best-contact-us-pages/">Contact us</a>
+        </nav>
+
+        <!-- Paragraph stating usefull information about the form -->
+        <p>
+            The information from this survey will be used to make improvements to the <abbr title="Online Food Delivery">OFD</abbr> website. <br>
+            All fields marked with a <span class="required">*</span> must be filled in.
+        </p>
+
+        <form name="surveyForm" method="get" action="http://evc-cit.info/cgi-bin/echoform.cgi" onsubmit="return validateForm();">
+            <!-- This fieldset contains the majority of the required information from the customer -->
+            <fieldset>
+                <legend>Personal Information</legend> <br>
+
+                <!-- Text boxes are used to enter firstname, lastname and email address -->
+                First Name: <input type="text" placeholder="First name only" name="firstName"> <span class="required">*</span>
+                Last Name: <input type="text" placeholder="Last name only" name="lastName"> <span class="required">*</span> <br><br>
+                Email: <input type="text" placeholder="example@domain.com" name="email"> <span class="required">*</span><br><br>
+
+                <!-- Radio buttons are used to select an age range -->
+                Age range: <span class="required">*</span><br>
+                <input type="radio" name="ageRange" value="less than 20" /> less than 20<br>
+                <input type="radio" name="ageRange" value="20-30" /> 20-30<br>
+                <input type="radio" name="ageRange" value="31-40" /> 31-40<br>
+                <input type="radio" name="ageRange" value="41-50" /> 41-50<br>
+                <input type="radio" name="ageRange" value="51-60" /> 51-60<br>
+                <input type="radio" name="ageRange" value="more than 60" /> more than 60<br><br>
+
+                <!-- A text area is used to provide the address details -->
+                Address: <textarea name="address" rows="5" cols="55"></textarea> <span class="required">*</span><br><br>
+
+                Post Code: <input type="text" size="4" name="postCode"> <span class="required">*</span> &nbsp;
+
+                <!-- A dropdown menu is used to select the state -->
+                State:<select name="state">
+                    <option value="Select" selected="selected">Select</option>
+                    <option value="NSW">NSW</option>
+                    <option value="QLD">QLD</option>
+                    <option value="SA">SA</option>
+                    <option value="TAS">TAS</option>
+                    <option value="VIC">VIC</option>
+                    <option value="WA">WA</option>
+                </select>
+                <span class="required">*</span>
+            </fieldset>
+            <br>
+
+            <!-- This fieldset contains all the survey questions -->
+            <fieldset>
+                <legend>Survey Questions</legend>
+                <ol>
+                    <li>
+                        <!-- Checkboxes are used to select cuisine types -->
+                        What cuisine types are you interested in? (One or more) <span class="required">*</span> <br>
+                        <input type="checkbox" name="faveCuisine" value="Asian"> Asian<br>
+                        <input type="checkbox" name="faveCuisine" value="BBQ and Grill"> BBQ & Grill<br>
+                        <input type="checkbox" name="faveCuisine" value="Burgers"> Burgers<br>
+                        <input type="checkbox" name="faveCuisine" value="Indian"> Indian<br>
+                        <input type="checkbox" name="faveCuisine" value="Italian"> Italian<br>
+                        <input type="checkbox" name="faveCuisine" value="Thai"> Thai<br><br>
+                    </li>
+
+                    <li>
+                        Please describe your favourite cuisine. <br>
+                        <textarea name="otherCuisines" rows="4" cols="70"></textarea> <br><br>
+                    </li>
+
+                    <li>
+                        How did you find out about this website? <br>
+                        <input type="radio" name="siteDiscovery" value="Online Advertisement" /> Online Advertisement<br>
+                        <input type="radio" name="siteDiscovery" value="Social Media" /> Social Media<br>
+                        <input type="radio" name="siteDiscovery" value="Word-of-Mouth" /> Word-of-Mouth<br>
+                        <input type="radio" name="siteDiscovery" value="Other" /> Other<br><br>
+                    </li>
+
+                    <li>
+                        Would you recommend <abbr title="Online Food Delivery">OFD</abbr> to your friends and family? <br>
+                        <input type="radio" name="recommend" value="No" /> No<br>
+                        <input type="radio" name="recommend" value="Maybe" /> Maybe<br>
+                        <input type="radio" name="recommend" value="Definitely" /> Definitely<br><br>
+                    </li>
+
+                    <li>
+                        What additional features would you like to be implemented on the <abbr title="Online Food Delivery">OFD</abbr> website? <br>
+                        <textarea name="features" rows="4" cols="70"></textarea> <br>
+                    </li>
+                </ol>
+            </fieldset>
+            <br>
+
+            <!-- Fieldset used to submit or reset the form -->
+            <fieldset>
+                <legend>Submit Form</legend> <br>
+                <input type="submit" value="Submit" />
+                <input type="reset" value="Reset" />
+            </fieldset>
+        </form>
+            <br>
+            <!--  Webpage footer section -->
+            <div class="footer">
+                <!-- Webpage copyright info -->
+                <p id="copyright" class="copyright">
+                    Copyright&#169; Jacobus Janse van Vuren <br>
+                    <a href="mailto:jacobus.jansevanvuren@uon.edu.au">jacobus.jansevanvuren@uon.edu.au</a> <br>
+                    c3252194 <br>
+                    Information Technology
+                </p>
+            </div>
+    </body>
+</html>

@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="cuisine.xsl" type="text/xsl"?>
+
+<!DOCTYPE cuisine [
+<!ELEMENT cuisine           (cuisineType, restaurant+)>
+<!ELEMENT restaurant        ( logo?
+                            , picture+
+                            , address
+                            , phoneNo+
+                            , openingHours
+                            , delivery
+                            , description
+                            , rating?
+                            , gpsCoordinates?)
+>
+<!ELEMENT cuisineType       EMPTY>
+<!ELEMENT logo              (#PCDATA)>
+<!ELEMENT picture           (#PCDATA)>
+<!ELEMENT address           EMPTY>
+<!ELEMENT phoneNo           (#PCDATA)>
+<!ELEMENT openingHours      (openTimes+)>
+<!ELEMENT openTimes         (openTime, closeTime)>
+<!ELEMENT openTime          (time)>
+<!ELEMENT closeTime         (time)>
+<!ELEMENT time              EMPTY>
+<!ELEMENT delivery          (minimumPrice, fee)>
+<!ELEMENT minimumPrice      EMPTY>
+<!ELEMENT fee               EMPTY>
+<!ELEMENT description       (#PCDATA)>
+<!ELEMENT gpsCoordinates    EMPTY>
+
+<!ATTLIST restaurant        name        CDATA   #REQUIRED>
+<!ATTLIST restaurant        url         CDATA   #REQUIRED>
+<!ATTLIST restaurant        openDays    CDATA   #REQUIRED>
+<!ATTLIST restaurant        rating      CDATA   #IMPLIED>
+<!ATTLIST cuisineType       type        (Asian
+                                                | BBQandGrill
+                                                | Burger
+                                                | Indian
+                                                | Italian
+                                                | Thai)
+                                                #REQUIRED
+>
+<!ATTLIST address           streetNo    CDATA   #REQUIRED>
+<!ATTLIST address           streetName  CDATA   #REQUIRED>
+<!ATTLIST address           city        CDATA   #REQUIRED>
+<!ATTLIST address           zipCode     CDATA   #REQUIRED>
+<!ATTLIST phoneNo           type        CDATA   #REQUIRED>
+<!ATTLIST openDays          day         CDATA   #REQUIRED>
+<!ATTLIST openTimes         day         CDATA   #REQUIRED>
+<!ATTLIST time              amPm        (am|pm) #REQUIRED>
+<!ATTLIST time              hours       CDATA   #REQUIRED>
+<!ATTLIST time              minutes     CDATA   #REQUIRED>
+<!ATTLIST minimumPrice      dollars     CDATA   #REQUIRED>
+<!ATTLIST minimumPrice      cents       CDATA   #REQUIRED>
+<!ATTLIST fee               dollars     CDATA   #REQUIRED>
+<!ATTLIST fee               cents       CDATA   #REQUIRED>
+<!ATTLIST gpsCoordinates    latitude    CDATA   #REQUIRED>
+<!ATTLIST gpsCoordinates    longitude   CDATA   #REQUIRED>
+
+<!ENTITY as     "Asian">
+<!ENTITY bq     "BBQandGrill">
+<!ENTITY bu     "Burger">
+<!ENTITY in     "Indian">
+<!ENTITY it     "Italian">
+<!ENTITY th     "Thai">
+<!ENTITY mon    "Monday">
+<!ENTITY tue    "Tuesday">
+<!ENTITY wed    "Wednesday">
+<!ENTITY thu    "Thursday">
+<!ENTITY fri    "Friday">
+<!ENTITY sat    "Saturday">
+<!ENTITY sun    "Sunday">
+]>
+
+<cuisine>
+    <cuisineType type="&as;"/>
+    <restaurant name="The Red Noodle" url="http://www.rednoodle.com.au/" openDays="&mon;&#45;&sun;"
+     rating="4">
+        <logo>images/rednoodlelogo.jpg</logo>
+        <picture>images/noodlepic.jpg</picture>
+        <address streetNo="712" streetName="Pallet Street" city="Maitland" zipCode="2323"/>
+        <phoneNo type="Office">9144127567</phoneNo>
+        <openingHours>
+            <openTimes day="&mon;&#45;&sun;">
+                <openTime>
+                    <time amPm="am" hours="10" minutes="00"/>
+                </openTime>
+                <closeTime>
+                    <time amPm="pm" hours="08" minutes="30"/>
+                </closeTime>
+            </openTimes>
+        </openingHours>
+        <delivery>
+            <minimumPrice dollars="10" cents="00"/>
+            <fee dollars="2" cents="50"/>
+        </delivery>
+        <description>Great tasting noodles. Great prices.</description>
+    </restaurant>
+
+    <restaurant name="Asian Fusion" url="http://www.asianfusion.com.au/" openDays="&mon;&#45;&fri;"
+     rating="3.5">
+        <picture>images/ricepic.jpg</picture>
+        <address streetNo="728" streetName="Glenview Drive" city="Anna Bay" zipCode="2316"/>
+        <phoneNo type="Office">3615980151</phoneNo>
+        <openingHours>
+            <openTimes day="&mon;&#45;&fri;">
+                <openTime>
+                    <time amPm="am" hours="09" minutes="00"/>
+                </openTime>
+                <closeTime>
+                    <time amPm="pm" hours="09" minutes="00"/>
+                </closeTime>
+            </openTimes>
+        </openingHours>
+        <delivery>
+            <minimumPrice dollars="12" cents="00"/>
+            <fee dollars="2" cents="00"/>
+        </delivery>
+        <description>Large variety of asian foods.</description>
+    </restaurant>
+
+    <restaurant name="Master Sushi" url="http://www.mastersushi.com.au/" openDays="&mon;&#45;&sun;"
+     rating="4.5">
+        <picture>images/californiaroll.jpg</picture>
+        <address streetNo="38" streetName="Oakmound Drive" city="Allworth" zipCode="2425"/>
+        <phoneNo type="Office">7733696302</phoneNo>
+        <openingHours>
+            <openTimes day="&mon;&#45;&fri;">
+                <openTime>
+                    <time amPm="am" hours="09" minutes="00"/>
+                </openTime>
+                <closeTime>
+                    <time amPm="pm" hours="10" minutes="00"/>
+                </closeTime>
+            </openTimes>
+            <openTimes day="&sat;&#45;&sun;">
+                <openTime>
+                    <time amPm="am" hours="09" minutes="00"/>
+                </openTime>
+                <closeTime>
+                    <time amPm="pm" hours="02" minutes="00"/>
+                </closeTime>
+            </openTimes>
+        </openingHours>
+        <delivery>
+            <minimumPrice dollars="15" cents="00"/>
+            <fee dollars="3" cents="00"/>
+        </delivery>
+        <description>Best sushi is master sushi.</description>
+        <gpsCoordinates latitude="&#45;32.543054" longitude="151.945307"/>
+    </restaurant>
+</cuisine>
